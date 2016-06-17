@@ -15,5 +15,6 @@ function search() {
     var str = JSON.stringify(response.result);
     //$('#search-container').html('<pre>' + str + '</pre>');
 	createLinks(str);
+	createButtons(str);
   });
 }
