@@ -1,4 +1,5 @@
-<?php
+function getServerData(){
+serverData = <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -22,4 +23,7 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
-?>
+?>;
+
+return serverData;
+}

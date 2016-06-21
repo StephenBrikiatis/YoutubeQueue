@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <script src = "testRead.php"></script>
   </head>
   <body>
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
@@ -40,14 +41,13 @@
       //    the player should play for six seconds and then stop.
       var done = false;
       function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
+        if (event.data == YT.PlayerState.ENDED) {
+          setTimeout(nextVideo, 6000);
           done = true;
         }
       
-      function stopVideo() {
-        player.stopVideo();
-		player.loadVideoById({videoId: videoList[1]});
+      function nextVideo() {
+		player.loadVideoById(getServerData());
       }
 	  
 	  // After the API loads, call a function to enable the search box.

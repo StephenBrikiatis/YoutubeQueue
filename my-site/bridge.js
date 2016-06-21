@@ -1,13 +1,13 @@
-function reqListener(){
-	console.log(this.responseText);
-}
+    function getVariable(){
+	var orginalRequest = new XMLHttpRequest();
 
-var orginalRequest = new XMLHttpRequest();
+	orginalRequest.onload = function() {
+		alert(this.responseText);
+	};
 
-orginalRequest.onload = function() {
-	alert(this.responseText);
-};
+	orginalRequest.open("post", "testRead.php", true);
 
-orginalRequest.open("get", "testRead.php", true);
-
-orginalRequest.send();
+	orginalRequest.send();
+	
+	return(orginalRequest.responseText);
+	}	
