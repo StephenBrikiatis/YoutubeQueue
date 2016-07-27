@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <script src = "testRead.php"></script>
+    <script src = "testRead.php"></script>
   </head>
   <body>
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
@@ -10,7 +10,6 @@
     <script>
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
-	  var videoList = ['t7wJ8pE2qKU', 'pugpfx-Q8N4', 'QkzzLZU8xE0'];
 
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -23,7 +22,7 @@
         player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId: videoList[0],
+          videoId: getServerData(),
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -47,7 +46,7 @@
         }
       
       function nextVideo() {
-		player.loadVideoById(getServerData());
+		location.reload();
       }
 	  
 	  // After the API loads, call a function to enable the search box.

@@ -2,6 +2,8 @@
 function createLinks(JSONString) {
 	var obj = JSON.parse(JSONString);
 	
+	console.log(obj.pageInfo.resultsPerPage);
+	
 	for(i = 0; i < obj.pageInfo.resultsPerPage; i++) {
 		var div = document.createElement("div");
 		div.setAttribute("id", obj.items[i].id.videoId);

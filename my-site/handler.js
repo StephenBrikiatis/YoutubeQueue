@@ -1,14 +1,18 @@
-function createButtons(JSONstring)
+function createButtons(JSONstring) // this function creates the search elements
 {
 	var obj = JSON.parse(JSONstring);
-	var comound = "#" + obj.items[0].id.videoId;
-	console.log(comound);
+	
+for(i = 0; i < obj.pageInfo.resultsPerPage; i++)
+{	
+	var compound = "#" + obj.items[i].id.videoId;
+	var name = obj.items[i].id.videoId; //This element is needed for passing the data in a for loop
+	console.log(compound);
 	$(document).ready(function(){
-		$(comound).click(function(){
+		$(compound).click(function(){
 			$.ajax({ 
 				type: 'POST',
-				url: 'test.php',
-				data: ({videoId: obj.items[0].id.videoId}),
+				url: 'writeFile.php',
+				data: ({videoId: name}), //used down here
 				success: function(response){
 					console.log(response);
 				}
@@ -17,5 +21,6 @@ function createButtons(JSONstring)
 	});
 
 });
+}
 
 }

@@ -1,5 +1,6 @@
 function getServerData(){
-serverData = <?php
+
+var serverData = <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -17,13 +18,15 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 		echo json_encode($row["videoId"]);
+		$delete = "DELETE FROM videoList WHERE videoId='".$row["videoId"]."' LIMIT 1;";
+		$conn->query($delete);
 	}
 } else {
-	echo "No results";
+	echo "'No results'";
 }
 
 $conn->close();
 ?>;
-
+//console.log(serverData);
 return serverData;
 }
